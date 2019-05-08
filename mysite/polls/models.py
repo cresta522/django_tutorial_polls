@@ -15,6 +15,12 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
+    was_published_recently.admin_order_field = 'pub_date'
+    # 型 デフォは文字列なのでソートできない
+    was_published_recently.boolean = True
+    # 列の表記名
+    was_published_recently.short_description = 'Published recently?'
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
