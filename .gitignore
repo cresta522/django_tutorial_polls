@@ -109,3 +109,4 @@ venv.bak/
 .bashrc
 .profile
 .tmux/
+.ipython/
